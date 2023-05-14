@@ -1,0 +1,30 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "table",
+      "direction": "in",
+      "name": "messageJSON",
+      "tableName": "counter",
+      "partitionKey": "count",
+      "rowKey": "visit_count",
+      "take": "1",
+      "connection": "AzureTableEndpoint"
+    }
+  ]
+}
