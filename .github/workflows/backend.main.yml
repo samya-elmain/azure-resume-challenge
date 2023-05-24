@@ -1,41 +1,54 @@
-name: Python Tests and Azure Deployment
+name: deploy-backend
 on:
   push:
     branches:
-      - main
+      - "main"
     paths:
       - "backend/**"
+
 jobs:
-  test:
-    name: Run Python Tests
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
+        run: |
+          cd backend/api
+          pip install -r requirements.txt
       - name: Run tests
-        run: pytest
-
-  deploy:
-    name: Deploy ARM Template to Azure
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Azure CLI
-        uses: azure/login@v1
+        run: |
+          cd backend/tests
+          python test_api.py
+      - name: Build package
+        run: |
+          cd backend/api
+          pip install --target=./package -r requirements.txt
+          zip -r ../function.zip .
+          cd ../
+          mv function.zip ../function.zip
+      - name: Deploy Azure resources
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: resume-challenge
+          template: ./azure-resource-template.json
+          parameters: |
+            key1=value1
+            key2=value2
+            # Add more parameters as needed
+      - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy ARM Template
-        run: az deployment group create --resource-group resume-challenge --template-file /backend/
+      - name: Deploy Azure Function
+        uses: azure/functions-action@v1
+        with:
+          app-name: your-azure-function-app-name
+          package: ./function.zip
+      - name: logout
+        run: |
+          az logout
+        if: always()
