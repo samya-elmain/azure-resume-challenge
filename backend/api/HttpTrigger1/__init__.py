@@ -8,6 +8,7 @@ from azure.data.tables import TableServiceClient, TableClient, TableEntity, Upda
 def func_update_counter(num: int):
     return num+1
 
+
 def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     try:
         data = json.loads(messageJSON)
