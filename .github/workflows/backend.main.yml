@@ -23,6 +23,7 @@ jobs:
       - name: Run tests
         run: |
           cd backend/tests/
+          pip install pytest
           python test_api.py
       - name: Build package
         run: |
