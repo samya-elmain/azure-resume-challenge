@@ -37,19 +37,15 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: resume-challenge
           template: ./azure-resource-template.json
-          parameters: |
-            key1=value1
-            key2=value2
-            # Add more parameters as needed
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy Azure Function
         uses: azure/functions-action@v1
         with:
-          app-name: your-azure-function-app-name
+          app-name: azurefunctioncount
           package: ./function.zip
-      - name: logout
+      - name: Logout
         run: |
           az logout
         if: always()
