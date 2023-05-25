@@ -31,15 +31,16 @@ jobs:
           zip -r ../function.zip .
           cd ../
           mv function.zip ../function.zip
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy Azure resources
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: resume-challenge
           template: ./azure-resource-template.json
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy Azure Function
         uses: azure/functions-action@v1
         with:
