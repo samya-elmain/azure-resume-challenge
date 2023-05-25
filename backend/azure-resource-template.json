@@ -157,7 +157,7 @@
         "enableAnalyticalStorage": false,
         "backupPolicy": null,
         "cors": {
-          "allowedOrigins": *,
+          "allowedOrigins": "*",
           "allowedMethods": [
             "GET",
             "POST",
