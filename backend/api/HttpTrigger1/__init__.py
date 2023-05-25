@@ -26,4 +26,5 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     counter_table = service.get_table_client('counter')
     counter_table.update_entity(mode=UpdateMode.REPLACE, entity=updated_entity)
 
+    
     return func.HttpResponse(f"{updated_counter}")
