@@ -158,18 +158,10 @@
         "backupPolicy": null,
         "cors": {
           "allowedOrigins": "*",
-          "allowedMethods": [
-            "GET",
-            "POST",
-            "PUT",
-            "PATCH",
-            "DELETE",
-            "HEAD",
-            "OPTIONS"
-          ],
-          "allowedHeaders": [],
+          "allowedMethods": ["*"],
+          "allowedHeaders": ["*"],
           "exposedHeaders": [],
-          "maxAgeInSeconds": null
+          "maxAgeInSeconds": 86400
         },
         "ipRules": [],
         "virtualNetworkRules": [],
