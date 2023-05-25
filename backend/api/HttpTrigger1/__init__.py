@@ -19,6 +19,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
         'RowKey':'visit_count',
         'number': updated_counter
     }
+    
     #Connect to table API
     connection_string = os.environ['AzureTableEndpoint']
     service = TableServiceClient.from_connection_string(conn_str=connection_string)
