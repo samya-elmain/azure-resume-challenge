@@ -13,7 +13,6 @@ def test_api():
     # Assert other conditions based on your expected API behavior
     # For example, check if the response contains the expected data or if the database is updated correctly.
     # You can also test for edge cases and unexpected input scenarios.
-
     # Example assertions:
     # assert response.json()["data"] == expected_data
     # assert response.json()["success"] is True
