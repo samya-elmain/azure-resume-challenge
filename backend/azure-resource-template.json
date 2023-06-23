@@ -23,9 +23,9 @@
       "name": "[parameters('sites_azurefunctioncount_name')]",
       "location": "West Europe",
       "tags": {
-        "hidden-link: /app-insights-resource-id": "/subscriptions/4a1548fb-fe82-4a7b-99ec-76f4afe6bf28/resourceGroups/azurefunctioncount/providers/microsoft.insights/components/azurefunctioncount",
-        "hidden-link: /app-insights-instrumentation-key": "a4c02966-7e06-4e35-9c20-8d38738fe555",
-        "hidden-link: /app-insights-conn-string": "InstrumentationKey=a4c02966-7e06-4e35-9c20-8d38738fe555;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/"
+        "hidden-link:/app-insights-resource-id": "/subscriptions/4a1548fb-fe82-4a7b-99ec-76f4afe6bf28/resourceGroups/azurefunctioncount/providers/microsoft.insights/components/azurefunctioncount",
+        "hidden-link:/app-insights-instrumentation-key": "a4c02966-7e06-4e35-9c20-8d38738fe555",
+        "hidden-link:/app-insights-conn-string": "InstrumentationKey=a4c02966-7e06-4e35-9c20-8d38738fe555;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/"
       },
       "kind": "functionapp,linux",
       "properties": {
@@ -56,7 +56,14 @@
           "alwaysOn": false,
           "http20Enabled": false,
           "functionAppScaleLimit": 200,
-          "minimumElasticInstanceCount": 0
+          "minimumElasticInstanceCount": 0,
+          "cors": {
+            "allowedOrigins": ["*"],
+            "allowedMethods": ["*"],
+            "allowedHeaders": ["*"],
+            "exposedHeaders": [],
+            "maxAgeInSeconds": 86400
+          }
         },
         "scmSiteAlsoStopped": false,
         "clientAffinityEnabled": false,
