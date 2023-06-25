@@ -37,8 +37,8 @@ jobs:
 # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
-      working-directory: ../backend/
+      working-directory: /backend/
 # Apply Terraform changes
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      working-directory: ../backend/
+      working-directory: /backend/
