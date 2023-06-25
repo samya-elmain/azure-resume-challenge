@@ -33,12 +33,12 @@ jobs:
 # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: /backend/
+      working-directory: ./backend/
 # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
-      working-directory: /backend/
+      working-directory: ./backend/
 # Apply Terraform changes
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      working-directory: /backend/
+      working-directory: ./backend/
