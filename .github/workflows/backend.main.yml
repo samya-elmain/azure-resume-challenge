@@ -65,15 +65,21 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
       working-directory: ./backend/
-#     - name: Get Output Variables
-#       id: output-vars
-#       run: |
-#         echo "::set-output name=resource_group::$(terraform output -raw azurerm_resource_group_name)"
-#         echo "::set-output name=function_app_name::$(terraform output -raw azurerm_function_app_name)"
-    - name: Deploy Function
-      run: |
-        cd ./backend/api
-        az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../function.zip --build-remote true
+    
+  deploy-function:
+    name: 'Deploy Function'
+    needs: terraform
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Function App
+        run: |
+          cd ./backend/api
+          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../function.zip --build-remote true
 
 #       - name: Azure Login
 #         uses: azure/login@v1
