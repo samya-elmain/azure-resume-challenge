@@ -73,7 +73,8 @@ jobs:
     - name: Deploy Function
       run: |
         cd ./backend/api
-        az functionapp deployment source config-zip -g ${{ steps.output-vars.outputs.resource_group }} -n ${{ steps.output-vars.outputs.function_app_name }} --src ../function.zip --build-remote true
+        az functionapp deployment source config-zip --resource-group ${{ steps.output-vars.outputs.resource_group }} --name ${{ steps.output-vars.outputs.function_app_name }} --src ../function.zip
+
 #       - name: Azure Login
 #         uses: azure/login@v1
 #         with:
