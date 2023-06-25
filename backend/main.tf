@@ -18,12 +18,10 @@ terraform {
 provider "azurerm" {
   features {}
 }
-
 resource "azurerm_resource_group" "example" {
   name     = "azresume-challenge-grp"
   location = "West Europe"
 }
-
 resource "azurerm_storage_account" "example" {
   name                     = "azresumechallengestorage"
   resource_group_name      = azurerm_resource_group.example.name
@@ -38,7 +36,6 @@ resource "azurerm_service_plan" "example" {
   os_type             = "Linux"
   sku_name            = "Y1"
 }
-
 resource "azurerm_linux_function_app" "example" {
   name                = "azresume-linux-function-app"
   resource_group_name = azurerm_resource_group.example.name
