@@ -26,7 +26,7 @@ jobs:
           python test_api.py
       - name: Build package
         run: |
-          cd backend/api
+          cd ${{ github.workspace }}/backend/api
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
           cd ../
