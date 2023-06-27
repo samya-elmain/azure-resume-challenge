@@ -82,7 +82,7 @@ jobs:
       - name: Deploy Function App
         run: |
           ls -a  # Optional: Verify if function.zip exists
-          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../backend/api--build-remote true
+          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../backend/function.zip--build-remote true
 
 #       - name: Azure Login
 #         uses: azure/login@v1
