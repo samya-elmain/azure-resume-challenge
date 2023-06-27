@@ -29,8 +29,6 @@ jobs:
           cd ${{ github.workspace }}/backend/api
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
-          cd ../
-          mv function.zip ../function.zip
   terraform:
     name: 'Terraform'
     env:
@@ -80,7 +78,7 @@ jobs:
       - name: Deploy Function App
         run: |
           ls -a  # Optional: Verify if function.zip exists
-          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../function.zip --build-remote true
+          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../backend/api--build-remote true
 
 #       - name: Azure Login
 #         uses: azure/login@v1
