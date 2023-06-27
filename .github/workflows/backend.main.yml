@@ -32,6 +32,7 @@ jobs:
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
           ls -a 
+          ls -a ..
   terraform:
     name: 'Terraform'
     env:
