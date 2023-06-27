@@ -24,6 +24,8 @@ jobs:
           cd backend/tests/
           pip install pytest
           python test_api.py
+      - name: Set directory permissions
+        run: chmod -R 755 ${{ github.workspace }}
       - name: Build package
         run: |
           cd ${{ github.workspace }}/backend/api
