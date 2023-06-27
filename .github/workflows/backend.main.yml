@@ -81,6 +81,7 @@ jobs:
         run: |
           cd backend/api/
           az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ../function.zip --build-remote true
+
 #       - name: Azure Login
 #         uses: azure/login@v1
 #         with:
