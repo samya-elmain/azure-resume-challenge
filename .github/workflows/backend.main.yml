@@ -28,7 +28,7 @@ jobs:
         run: chmod -R 755 ./
       - name: Build package
         run: |
-          cd ${{ github.workspace }}/backend/api
+          cd $./backend/api/
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
   terraform:
