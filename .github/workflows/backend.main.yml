@@ -48,6 +48,8 @@ jobs:
         shell: bash
     steps:
     # Checkout the repository to the GitHub Actions runner
+    - name: List files in backend directory
+      run: ls -a ./backend
     - name: Checkout
       uses: actions/checkout@v3
 # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
