@@ -79,8 +79,8 @@ jobs:
           creds: '{"clientId": "${{ secrets.AZURE_CLIENT_ID }}","clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId": "${{ secrets.AZURE_TENANT_ID }}"}'
       - name: Deploy Function App
         run: |
-          ls -al  # Optional: Verify if function.zip exists
-          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src function.zip --build-remote true
+          ls -a  # Optional: Verify if function.zip exists
+          az functionapp deployment source config-zip -g azresume-challenge-grp -n azresume-linux-function-app --src ./function.zip --build-remote true
 
 #       - name: Azure Login
 #         uses: azure/login@v1
