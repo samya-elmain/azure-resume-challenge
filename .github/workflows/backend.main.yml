@@ -73,6 +73,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Check Azure CLI version
+        run: |
+           az --version
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
