@@ -25,10 +25,10 @@ jobs:
           pip install pytest
           python test_api.py
       - name: Set directory permissions
-        run: chmod -R 755 ./
+        run: chmod -R 755 backend/api/
       - name: Build package
         run: |
-          cd $./backend/api/
+          cd backend/api/
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
   terraform:
