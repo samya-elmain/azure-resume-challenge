@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: function-zip
-          path: function.zip
+          path: backend/function.zip
 
   terraform:
     name: 'Terraform'
