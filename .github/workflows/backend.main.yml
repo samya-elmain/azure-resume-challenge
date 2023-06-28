@@ -85,5 +85,5 @@ jobs:
         run: ls -a ./backend
       - name: Deploy Function App
         run: |
-          ls -a ./backend 
+          ls -a 
           az functionapp deployment source config-zip --resource-group azresume-challenge-grp --name azresume-linux-function-app --src ./backend/function.zip --build-remote true
