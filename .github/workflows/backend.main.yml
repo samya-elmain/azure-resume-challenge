@@ -29,14 +29,11 @@ jobs:
           cd backend/api/
           pip install --target=./package -r requirements.txt
           zip -r ../function.zip .
-          ls -a 
-          ls -a ..
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: function-zip
           path: backend/function.zip
-
   terraform:
     name: 'Terraform'
     env:
@@ -65,7 +62,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
         working-directory: ./backend/
-
   deploy-function:
     name: 'Deploy Function'
     needs: [terraform, build]
