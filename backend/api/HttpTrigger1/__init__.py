@@ -3,7 +3,6 @@ import os
 import azure.functions as func
 from azure.data.tables import TableServiceClient, TableClient, TableEntity, UpdateMode
 
-
 def func_update_counter(num: int):
     return num+1
 
