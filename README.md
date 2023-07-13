@@ -2,6 +2,8 @@
 The [cloud resume challenge](https://cloudresumechallenge.dev/docs/the-challenge/azure/) is a challenge by Forrest Brazeal to help people to prepare for a job in the cloud industry.
 ## Project Description
 This project is a simple resume website that displays a count of how many times the website has been visited. The website consists of a front-end and a back-end, which are hosted using Azure services. The front-end is built using HTML, CSS, and JavaScript, and is hosted in an Azure Storage account. The back-end is built using Python and Azure Functions, and uses Azure's Table API in Cosmos DB to store and update the count.
+![image](https://github.com/samya-elmain/azure-resume-challenge/assets/93472667/e836b2be-9d3d-4510-ace2-f5d542c26fde)
+
 
 ## Technologies Used
 The project uses a variety of technologies, including:
