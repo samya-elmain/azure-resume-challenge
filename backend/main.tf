@@ -48,3 +48,4 @@ resource "azurerm_linux_function_app" "example" {
 
   site_config {}
 }
+
