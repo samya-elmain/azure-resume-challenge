@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     getVisitCount();
 });
-
 const functionApi = 'https://azurefunctioncount.azurewebsites.net/api/httptrigger1';
 
 const getVisitCount = () => {
