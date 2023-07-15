@@ -1,3 +1,4 @@
+# Define Terraform provider
 terraform {
   required_version = ">= 1.3"
   backend "azurerm" {
@@ -8,16 +9,15 @@ terraform {
   }
   required_providers {
     azurerm = {
+      version = "~>3.2"
       source  = "hashicorp/azurerm"
-      version = ">= 4.0"
     }
   }
 }
-
+# Configure the Azure provider
 provider "azurerm" {
   features {}
 }
-
 resource "azurerm_resource_group" "example" {
   name     = "azresume-challenge-grp"
   location = "West Europe"
