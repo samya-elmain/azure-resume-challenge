@@ -1,4 +1,3 @@
-# Define Terraform provider
 terraform {
   required_version = ">= 1.3"
   backend "azurerm" {
@@ -9,13 +8,12 @@ terraform {
   }
   required_providers {
     azurerm = {
-      version = "~>3.2"
       source  = "hashicorp/azurerm"
+      version = ">= 4.0"
     }
   }
 }
 
-# Configure the Azure provider
 provider "azurerm" {
   features {}
 }
@@ -33,10 +31,10 @@ resource "azurerm_storage_account" "example" {
   account_replication_type = "LRS"
 }
 
-resource "azurerm_app_service_plan" "example" {
+resource "azurerm_service_plan" "example" {
   name                = "azresume-app-service-plan"
-  resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
   sku {
     tier = "Dynamic"
     size = "Y1"
@@ -47,7 +45,7 @@ resource "azurerm_function_app" "example" {
   name                       = "azresume-function-app"
   resource_group_name        = azurerm_resource_group.example.name
   location                   = azurerm_resource_group.example.location
-  app_service_plan_id        = azurerm_app_service_plan.example.id
+  app_service_plan_id        = azurerm_service_plan.example.id
   storage_account_name       = azurerm_storage_account.example.name
   storage_account_access_key = azurerm_storage_account.example.primary_access_key
 
@@ -55,6 +53,7 @@ resource "azurerm_function_app" "example" {
     "FUNCTIONS_WORKER_RUNTIME"         = "python"
     "FUNCTIONS_EXTENSION_VERSION"      = "~3"
     "PYTHON_ENABLE_WORKER_EXTENSIONS" = "true"
+    "WEBSITE_RUN_FROM_PACKAGE"        = "https://<your-package-url>.zip"
   }
 
   site_config {
@@ -66,7 +65,7 @@ resource "azurerm_function_app" "example" {
   }
 
   depends_on = [
-    azurerm_app_service_plan.example
+    azurerm_service_plan.example
   ]
 }
 
