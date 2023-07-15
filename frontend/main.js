@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     getVisitCount();
 });
-const functionApi = 'https://azurefunctioncount.azurewebsites.net/api/httptrigger1';
+const functionApi = 'https://azresume-linux-function-app.azurewebsites.net/api/HttpTrigger1';
 
 const getVisitCount = () => {
     let count = 30;
